@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.NewsMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.News">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="time" column="time" jdbcType="VARCHAR"/>
+            <result property="author" column="author" jdbcType="VARCHAR"/>
+            <result property="sourceWeb" column="source_web" jdbcType="VARCHAR"/>
+            <result property="originalUrl" column="original_url" jdbcType="VARCHAR"/>
+            <result property="summary" column="summary" jdbcType="VARCHAR"/>
+            <result property="details" column="details" jdbcType="VARCHAR"/>
+            <result property="keyWord" column="key_word" jdbcType="VARCHAR"/>
+            <result property="originalUrlMd5" column="original_url_md5" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,time,
+        author,source_web,original_url,
+        summary,details,key_word,
+        original_url_md5
+    </sql>
+
+    <select id="findNewsByKeyword" resultType="generator.domain.News">
+        SELECT * FROM news
+        WHERE key_word = #{keyword}
+        <if test="startDate != null and endDate != null">
+            AND time BETWEEN #{startDate} AND #{endDate}
+        </if>
+    </select>
+
+    <select id="countByOriginalUrlMd5" resultType="int">
+        SELECT COUNT(*)
+        FROM news
+        WHERE original_url_md5 = #{md5}
+    </select>
+</mapper>

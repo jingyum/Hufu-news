@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.InterfacesMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.Interfaces">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="interf" column="interf" jdbcType="VARCHAR"/>
+            <result property="settittle" column="setTittle" jdbcType="VARCHAR"/>
+            <result property="settime" column="setTime" jdbcType="VARCHAR"/>
+            <result property="setsourceweb" column="setSourceWeb" jdbcType="VARCHAR"/>
+            <result property="setoriginalurl" column="setOriginalUrl" jdbcType="VARCHAR"/>
+            <result property="setsummary" column="setSummary" jdbcType="VARCHAR"/>
+            <result property="doc" column="doc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,interf,setTittle,
+        setTime,setSourceWeb,setOriginalUrl,
+        setSummary,doc
+    </sql>
+</mapper>
